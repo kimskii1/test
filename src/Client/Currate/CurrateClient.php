@@ -39,7 +39,7 @@ readonly class CurrateClient
             throw new ClientException('Currency list error', $statusCode);
         }
         if ($content['status'] !== '200') {
-            throw new ClientException($content['message'], $content['status']);
+            throw new ClientException($content['message'], (int) $content['status']);
         }
 
         return $content['data'];

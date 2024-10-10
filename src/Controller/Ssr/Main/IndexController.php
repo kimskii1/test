@@ -7,6 +7,7 @@ namespace App\Controller\Ssr\Main;
 use App\Repository\CurrencyRepository;
 use App\Repository\RateRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route(path: '/', name: 'default')]
@@ -18,7 +19,7 @@ class IndexController extends AbstractController
     ) {
     }
 
-    public function __invoke()
+    public function __invoke(): Response
     {
         $rates = $this->rateRepository->findAll();
         $currencies = $this->currencyRepository->findAll();

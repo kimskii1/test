@@ -21,9 +21,11 @@ class Currency
     #[ORM\Column(type: Types::STRING, length: 3, unique: true)]
     private string $code;
 
+    /** @var Collection<int, Rate> $ratesFrom */
     #[ORM\OneToMany(targetEntity: Rate::class, mappedBy: 'from')]
     private Collection $ratesFrom;
 
+    /** @var Collection<int, Rate> $ratesTo */
     #[ORM\OneToMany(targetEntity: Rate::class, mappedBy: 'to')]
     private Collection $ratesTo;
 
@@ -44,6 +46,9 @@ class Currency
         return $this;
     }
 
+    /**
+     * @return Collection<int, Rate>
+     */
     public function getRatesFrom(): Collection
     {
         return $this->ratesFrom;
@@ -57,6 +62,9 @@ class Currency
         }
     }
 
+    /**
+     * @return Collection<int, Rate>
+     */
     public function getRatesTo(): Collection
     {
         return $this->ratesTo;
